@@ -1,13 +1,8 @@
-# NH Interactive — V5 Real Hoodie Test
+# NH Interactive V6 — Unlimited Coins Test Build
 
-First real visible Shop outfit change.
+Testing build based on V5 Real Hoodie.
 
-Required GitHub Pages files:
-- index.html
-- moe-beginner.vrm
-- moe-hoodie.vrm
-- new-horizon-1.png
-- new-horizon-2.png
-- new-horizon-3.png
-
-Test: earn/use coins -> Shop -> buy White English Hoodie -> Inventory -> equip. Moe should switch from the white T-shirt VRM to the white hoodie VRM. Unequip returns to the beginner T-shirt model.
+- Starts with 999,999,999 coins.
+- Shop purchases do not deduct coins while test mode is enabled.
+- Real beginner ↔ hoodie VRM switching remains enabled.
+- Intended for testing Shop and Inventory quickly.
