@@ -1,16 +1,16 @@
-# NH Interactive – 2D Hero Avatar v4
+# NH Interactive – 2D Hero Fixed v5
 
-Changes:
-- Removed the duplicate avatar above the textbook cards.
-- Moved the current avatar into the main greeting / Good evening panel.
-- Made Moe much larger.
-- Removed the boxed/background presentation around the character.
-- Added a blue outline/frame effect around the character cutout.
-- Added a small speech bubble.
-- Kept Shop + Inventory + outfit switching.
-- Kept 999,999 development coins.
+This rebuild starts from the clean 2D Shop + Inventory v2 version.
+
+## Fixes
+- Only ONE homepage avatar.
+- Avatar is explicitly inside the Good morning/afternoon/evening dashboard hero.
+- Removed avatar from textbook section.
+- Removed accidental avatar from Continue Learning.
+- Speech bubble stays inside hero.
+- Character is larger and has a blue outline.
+- Added transparent WebP cutout versions for homepage display.
+- Shop + Inventory + Buy/Wear switching remain.
+- Current Avatar changes immediately when an owned outfit is worn.
+- 999,999 testing coins remain.
 - No VRM / Three.js files.
-
-Note:
-The current artwork is still based on the pilot cropped image files.
-For a perfectly clean transparent character edge, the next art step is exporting true transparent PNG/WebP character cutouts.

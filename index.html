@@ -270,197 +270,116 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 </style>
 
 
-<style id="moe2dHomeV3Styles">
-.textbook-heading{position:relative;min-height:300px;align-items:flex-end!important;overflow:visible!important}
-.moe2d-home-showcase{
-  margin-left:auto;width:min(520px,42vw);height:330px;position:relative;display:flex;
-  align-items:flex-end;justify-content:flex-end;overflow:visible;z-index:2
-}
-.moe2d-home-character-wrap{
-  position:absolute;right:210px;bottom:-18px;width:270px;height:350px;overflow:hidden;
-  display:flex;align-items:flex-end;justify-content:center;background:transparent!important
-}
-.moe2d-home-character-wrap img{
-  width:100%;height:100%;object-fit:contain;object-position:center bottom;background:transparent!important;
-  mix-blend-mode:multiply;filter:drop-shadow(0 14px 15px rgba(33,65,90,.16));
-  transform:scale(1.12);transform-origin:center bottom
-}
-.moe2d-home-current-card{
-  width:235px;margin:0 0 62px 0;padding:14px 15px;background:rgba(255,255,255,.92);
-  border:1px solid #cfe5f5;border-radius:18px;box-shadow:0 12px 28px rgba(41,82,111,.11);
-  display:flex;flex-direction:column;align-items:flex-start;gap:7px
-}
-.moe2d-home-current-card span{font-size:10px;letter-spacing:1.3px;color:#287fd8;font-weight:900}
-.moe2d-home-current-card strong{font-size:16px;color:#163b5e}
-.moe2d-home-current-card button{
-  border:1px solid #2e8df2;background:#fff;color:#1876d1;border-radius:10px;padding:7px 10px;
-  font-weight:900;cursor:pointer
-}
-@media(max-width:950px){
- .textbook-heading{min-height:240px}
- .moe2d-home-showcase{width:430px;height:270px}
- .moe2d-home-character-wrap{right:170px;width:220px;height:285px}
- .moe2d-home-current-card{width:190px;margin-bottom:40px}
-}
-@media(max-width:700px){
- .textbook-heading{min-height:180px}
- .moe2d-home-showcase{width:250px;height:200px}
- .moe2d-home-character-wrap{right:75px;width:160px;height:210px}
- .moe2d-home-current-card{width:135px;margin-bottom:20px;padding:9px}
- .moe2d-home-current-card button{font-size:11px}
-}
-</style>
-
-
-<style id="moe2dHeroAvatarV4Styles">
-/* Remove older homepage avatar leftovers */
-.moe2d-home-showcase,
-.moe2d-home-character-wrap,
-.moe2d-home-current-card,
+<style id="moe2dHeroFixedV5Styles">
+/* Old textbook avatar is retired */
 .moe2d-home-avatar{display:none!important}
 
-/* Hero/greeting character */
+.dashboard-hero{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:330px!important;
+  padding:38px 38px 38px 430px!important;
+  border:2px solid #54a8f7!important;
+}
+
 .moe2d-greeting-avatar{
   position:absolute;
-  left:22px;
+  left:18px;
   bottom:0;
-  width:360px;
-  height:100%;
-  min-height:290px;
-  z-index:2;
+  width:390px;
+  height:320px;
+  z-index:1;
   pointer-events:none;
 }
+
 .moe2d-avatar-art-frame{
   position:absolute;
-  left:0;
-  bottom:0;
-  width:335px;
-  height:315px;
+  left:48px;
+  bottom:-2px;
+  width:300px;
+  height:318px;
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  overflow:hidden;
+  overflow:visible;
   background:transparent!important;
 }
+
 .moe2d-avatar-art-frame img{
   width:100%;
   height:100%;
   object-fit:contain;
   object-position:center bottom;
   background:transparent!important;
-  border:0;
   filter:
-    drop-shadow(2px 0 0 #2e8df2)
-    drop-shadow(-2px 0 0 #2e8df2)
-    drop-shadow(0 2px 0 #2e8df2)
-    drop-shadow(0 -2px 0 #2e8df2)
-    drop-shadow(0 12px 16px rgba(25,67,103,.18));
-  transform:scale(1.08);
-  transform-origin:center bottom;
+    drop-shadow(2px 0 0 #2f91ef)
+    drop-shadow(-2px 0 0 #2f91ef)
+    drop-shadow(0 2px 0 #2f91ef)
+    drop-shadow(0 -2px 0 #2f91ef)
+    drop-shadow(0 12px 15px rgba(27,66,98,.18));
 }
+
 .moe2d-avatar-speech{
   position:absolute;
-  left:8px;
-  top:34px;
-  max-width:150px;
-  padding:11px 13px;
-  border-radius:22px;
+  left:3px;
+  top:24px;
+  width:130px;
+  padding:10px 11px;
+  border-radius:20px;
   background:#fff;
-  border:2px solid #2e8df2;
-  color:#143b63;
+  border:2px solid #2f91ef;
+  color:#163b60;
   font-weight:900;
-  font-size:14px;
+  font-size:13px;
   line-height:1.2;
   text-align:center;
-  box-shadow:0 8px 20px rgba(36,91,131,.10);
+  box-shadow:0 7px 17px rgba(38,77,109,.12);
 }
 
-/* Make first big greeting panel suitable for the character */
-.hero-card,
-.dashboard-hero,
-.hero,
-[class*="hero-banner"],
-[class*="dashboard-banner"]{
+.moe2d-hero-copy{
   position:relative;
-  overflow:hidden;
+  z-index:2;
+  flex:1;
+  min-width:0;
 }
 
-/* Give greeting content room so Moe doesn't cover it */
-.hero-card > *:not(.moe2d-greeting-avatar),
-.dashboard-hero > *:not(.moe2d-greeting-avatar),
-.hero > *:not(.moe2d-greeting-avatar),
-[class*="hero-banner"] > *:not(.moe2d-greeting-avatar),
-[class*="dashboard-banner"] > *:not(.moe2d-greeting-avatar){
+.level-orb{
   position:relative;
-  z-index:3;
+  z-index:2;
 }
 
-/* Current avatar info chip */
 .moe2d-current-avatar-chip{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  margin:8px 0 12px;
-  padding:8px 10px;
-  background:rgba(255,255,255,.92);
-  border:1px solid #c8e1f3;
-  border-radius:14px;
-  box-shadow:0 6px 16px rgba(39,77,108,.08);
+  margin:8px 0 4px;
+  padding:7px 10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.86);
+  border:1px solid #cce3f4;
   font-size:12px;
 }
-.moe2d-current-avatar-chip span{
-  color:#2b7ed0;
-  font-weight:900;
-}
-.moe2d-current-avatar-chip strong{
-  color:#173b5d;
-}
+.moe2d-current-avatar-chip span{font-weight:900;color:#2b7fd2}
+.moe2d-current-avatar-chip strong{color:#173b5d}
 .moe2d-current-avatar-chip button{
-  border:1px solid #2e8df2;
+  border:1px solid #2f91ef;
   background:#fff;
-  color:#1674cf;
-  border-radius:9px;
-  padding:5px 9px;
+  color:#1776d0;
+  border-radius:8px;
+  padding:5px 8px;
   font-weight:900;
   cursor:pointer;
 }
 
-/* Desktop spacing: shift greeting content right */
-@media(min-width:901px){
-  .hero-card,
-  .dashboard-hero,
-  .hero,
-  [class*="hero-banner"],
-  [class*="dashboard-banner"]{
-    padding-left:390px!important;
-    min-height:300px!important;
-  }
+@media(max-width:1050px){
+  .dashboard-hero{padding-left:330px!important}
+  .moe2d-greeting-avatar{width:300px}
+  .moe2d-avatar-art-frame{left:35px;width:235px}
+  .moe2d-avatar-speech{width:105px;font-size:11px}
 }
-@media(max-width:900px){
-  .moe2d-greeting-avatar{
-    width:250px;
-    min-height:225px;
-    left:8px;
-  }
-  .moe2d-avatar-art-frame{
-    width:235px;
-    height:230px;
-  }
-  .moe2d-avatar-speech{
-    font-size:11px;
-    max-width:115px;
-    top:18px;
-  }
-}
-@media(max-width:700px){
+@media(max-width:760px){
+  .dashboard-hero{padding:28px!important;min-height:auto!important}
   .moe2d-greeting-avatar{display:none}
-  .hero-card,
-  .dashboard-hero,
-  .hero,
-  [class*="hero-banner"],
-  [class*="dashboard-banner"]{
-    padding-left:inherit!important;
-  }
 }
 </style>
 
@@ -516,10 +435,21 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 <main>
 <section id="homeView" class="view active">
   <div class="dashboard-hero">
-    <div>
+    <div id="moe2dGreetingAvatar" class="moe2d-greeting-avatar">
+      <div class="moe2d-avatar-art-frame">
+        <img id="moe2dHomeAvatarImage" src="moe-beginner-cutout.webp" alt="Current Moe avatar">
+      </div>
+      <div class="moe2d-avatar-speech">Let's learn English<br>and have fun! 😊</div>
+    </div>
+    <div class="moe2d-hero-copy">
       <p class="eyebrow">YOUR LEARNING DASHBOARD</p>
       <h1 id="dashboardGreeting">Welcome back!</h1>
       <p>Keep your streak alive and continue building your English power.</p>
+      <div class="moe2d-current-avatar-chip">
+        <span>👤 Current Avatar</span>
+        <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
+        <button id="moe2dHomeChangeBtn" type="button">Change</button>
+      </div>
       <div class="dashboard-actions">
         <button id="continueBtn" class="primary-btn">▶ Continue Learning</button>
         <button id="browseBooksBtn" class="secondary-btn">📚 Browse Textbooks</button>
@@ -538,13 +468,6 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 
   <div class="dashboard-grid">
     <section class="dashboard-panel continue-panel">
-<div id="moe2dGreetingAvatar" class="moe2d-greeting-avatar">
-  <div class="moe2d-avatar-art-frame">
-    <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
-  </div>
-  <div class="moe2d-avatar-speech">Let's learn English<br>and have fun! 😊</div>
-</div>
-
       <div class="panel-title"><div><p class="eyebrow">PICK UP WHERE YOU LEFT OFF</p><h2>Continue Learning</h2></div><span class="panel-icon">🚀</span></div>
       <div id="continueCard" class="continue-card"><p>No recent unit yet.</p><small>Choose a textbook below to begin.</small></div>
     </section>
@@ -563,7 +486,7 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 
   <div id="textbookSection" class="textbook-heading">
     <div><p class="eyebrow">CHOOSE YOUR GRADE</p><h2>New Horizon Textbooks</h2><p>Choose a textbook and start learning.</p></div>
-    </div>
+    
       <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
       <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
       <button id="moe2dHomeChangeBtn" type="button">Change</button>
@@ -1261,13 +1184,7 @@ function renderDashboard(){
   let recent=null;try{recent=JSON.parse(localStorage.getItem("portalRecent")||"null")}catch{}
   if(recent){
     const key=`studied-${recent.grade}-${recent.label}`,count=JSON.parse(localStorage.getItem(key)||"[]").length,pct=recent.wordCount?Math.round(count/recent.wordCount*100):0;
-    $("continueCard").innerHTML=`<h3>${recent.title}</h3><p>${PORTAL_DATA[recent.grade]?.title||""} · ${recent.label}</p><div class="progress-track"><i style="width:${pct}%"></i></div><p>${count} of ${recent.wordCount} words studied · ${pct}%</p><button id="resumeRecentBtn" class="primary-btn">Continue →
-<div class="moe2d-current-avatar-chip">
-  <span>👤 Current Avatar</span>
-  <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
-  <button id="moe2dHomeChangeBtn" type="button">Change</button>
-</div>
-</button>`;
+    $("continueCard").innerHTML=`<h3>${recent.title}</h3><p>${PORTAL_DATA[recent.grade]?.title||""} · ${recent.label}</p><div class="progress-track"><i style="width:${pct}%"></i></div><p>${count} of ${recent.wordCount} words studied · ${pct}%</p><button id="resumeRecentBtn" class="primary-btn">Continue →</button>`;
     $("resumeRecentBtn").onclick=()=>{const d=recent.label.startsWith("Unit ")?PORTAL_DATA[recent.grade].units[recent.label.replace("Unit ","")]:[...(PORTAL_DATA[recent.grade].extras||[])].find(x=>x.title===recent.label);if(d){grade=recent.grade;openContent(d,recent.label)}};
     $("continueBtn").disabled=false;$("continueBtn").onclick=$("resumeRecentBtn").onclick;
   }else{$("continueBtn").disabled=true;$("continueBtn").onclick=()=>$("textbookSection").scrollIntoView({behavior:"smooth"})}
@@ -1447,11 +1364,11 @@ renderAdventure();
 
  const outfits={
    beginner:{
-     name:"Beginner Outfit",src:"moe-beginner-2d.webp",price:0,
+     name:"Beginner Outfit",src:"moe-beginner-2d.webp",heroSrc:"moe-beginner-cutout.webp",price:0,
      desc:"Your standard starter look."
    },
    hoodie:{
-     name:"Casual Hoodie Outfit",src:"moe-hoodie-2d.webp",price:1000,
+     name:"Casual Hoodie Outfit",src:"moe-hoodie-2d.webp",heroSrc:"moe-hoodie-cutout.webp",price:1000,
      desc:"A complete casual reward outfit."
    }
  };
@@ -1471,7 +1388,7 @@ renderAdventure();
      }
    }
    if($m("moe2dOutfitName"))$m("moe2dOutfitName").textContent=o.name;
-   if($m("moe2dHomeAvatarImage"))$m("moe2dHomeAvatarImage").src=o.src;
+   if($m("moe2dHomeAvatarImage"))$m("moe2dHomeAvatarImage").src=(o.heroSrc||o.src);
    if($m("moe2dHomeAvatarName"))$m("moe2dHomeAvatarName").textContent=o.name;
  }
  function renderShop(){
@@ -1549,13 +1466,11 @@ renderAdventure();
 </script>
 
 
-<script id="moe2dHeroPatchV4">
+<script id="moe2dHeroFixedPatchV5">
 document.addEventListener("DOMContentLoaded",()=>{
   const btn=document.getElementById("moe2dHomeChangeBtn");
   const inv=document.getElementById("moe2dInventoryBtn");
-  if(btn && inv){
-    btn.onclick=()=>inv.click();
-  }
+  if(btn && inv) btn.onclick=()=>inv.click();
 });
 </script>
 
