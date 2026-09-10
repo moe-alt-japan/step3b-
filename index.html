@@ -269,6 +269,48 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 @media(max-width:600px){.moe2d-owned-grid{grid-template-columns:1fr}.moe2d-home-avatar{display:none}}
 </style>
 
+
+<style id="moe2dHomeV3Styles">
+.textbook-heading{position:relative;min-height:300px;align-items:flex-end!important;overflow:visible!important}
+.moe2d-home-showcase{
+  margin-left:auto;width:min(520px,42vw);height:330px;position:relative;display:flex;
+  align-items:flex-end;justify-content:flex-end;overflow:visible;z-index:2
+}
+.moe2d-home-character-wrap{
+  position:absolute;right:210px;bottom:-18px;width:270px;height:350px;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:center;background:transparent!important
+}
+.moe2d-home-character-wrap img{
+  width:100%;height:100%;object-fit:contain;object-position:center bottom;background:transparent!important;
+  mix-blend-mode:multiply;filter:drop-shadow(0 14px 15px rgba(33,65,90,.16));
+  transform:scale(1.12);transform-origin:center bottom
+}
+.moe2d-home-current-card{
+  width:235px;margin:0 0 62px 0;padding:14px 15px;background:rgba(255,255,255,.92);
+  border:1px solid #cfe5f5;border-radius:18px;box-shadow:0 12px 28px rgba(41,82,111,.11);
+  display:flex;flex-direction:column;align-items:flex-start;gap:7px
+}
+.moe2d-home-current-card span{font-size:10px;letter-spacing:1.3px;color:#287fd8;font-weight:900}
+.moe2d-home-current-card strong{font-size:16px;color:#163b5e}
+.moe2d-home-current-card button{
+  border:1px solid #2e8df2;background:#fff;color:#1876d1;border-radius:10px;padding:7px 10px;
+  font-weight:900;cursor:pointer
+}
+@media(max-width:950px){
+ .textbook-heading{min-height:240px}
+ .moe2d-home-showcase{width:430px;height:270px}
+ .moe2d-home-character-wrap{right:170px;width:220px;height:285px}
+ .moe2d-home-current-card{width:190px;margin-bottom:40px}
+}
+@media(max-width:700px){
+ .textbook-heading{min-height:180px}
+ .moe2d-home-showcase{width:250px;height:200px}
+ .moe2d-home-character-wrap{right:75px;width:160px;height:210px}
+ .moe2d-home-current-card{width:135px;margin-bottom:20px;padding:9px}
+ .moe2d-home-current-card button{font-size:11px}
+}
+</style>
+
 </head>
 <body>
 
@@ -361,8 +403,16 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 
   <div id="textbookSection" class="textbook-heading">
     <div><p class="eyebrow">CHOOSE YOUR GRADE</p><h2>New Horizon Textbooks</h2><p>Choose a textbook and start learning.</p></div>
-    <div class="moe2d-home-avatar" id="moe2dHomeAvatar">
-      <div class="moe2d-home-avatar-label">CURRENT AVATAR</div>
+    <div class="moe2d-home-showcase" id="moe2dHomeAvatar">
+      <div class="moe2d-home-character-wrap">
+        <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
+      </div>
+      <div class="moe2d-home-current-card">
+        <span>👤 CURRENT AVATAR</span>
+        <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
+        <button id="moe2dHomeChangeBtn" type="button">Change Avatar →</button>
+      </div>
+    </div>
       <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
       <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
       <button id="moe2dHomeChangeBtn" type="button">Change</button>
