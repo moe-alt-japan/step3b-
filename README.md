@@ -1,14 +1,14 @@
-# Step 6A — Reward Engine + Level Up
+# NH Interactive v2.0 — Avatar + Rewards Pilot
 
-Built on the confirmed-working Step 5B student profile.
+Built from the uploaded NH Interactive v1.9.8 source.
 
-## New in this version
-- Reusable XP + coin reward engine
-- XP automatically rolls into levels
-- Reward toast animation
-- LEVEL UP celebration
-- Progress persists with localStorage
-- Temporary Practice / Quiz / Boss test buttons
-- `window.MoeRewards.grant({xp, coins, label})` can later be called by New Horizon activities
+Pilot additions:
+- First-time Boy/Moe character choice
+- Student nickname/profile saved on device
+- Header coin balance + student name
+- 3D Moe avatar modal using the known-working VRM loader
+- Existing real Quiz remains up to 40 questions
+- Correct Quiz answer: +10 XP and +2 coins
+- Adventure coins share the same coin wallet
 
-Upload `index.html`, `script.js`, `moe-beginner.vrm`, and this README to the same GitHub Pages repo.
+Upload all five files together to GitHub Pages. Give Pages a few minutes before testing.
