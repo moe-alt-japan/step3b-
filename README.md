@@ -1,18 +1,14 @@
-# Moe's English Practice — Step 3C Inventory v1
+# Step 4A — Visible Equipment Prototype
 
-This build is based on the known-working Step 3B VRM loader.
+This build keeps the verified working VRM loader from Step 3B/3C and adds the first visible equip-to-avatar pipeline.
 
-New in Step 3C:
-- Inventory button and modal
-- Five equipment slots: Top, Bottom, Shoes, Accessory, Background
-- Buy in Shop, then Equip/Unequip in Inventory
-- Purchased items and equipped choices persist with localStorage
-- Step 3B progress is migrated automatically when possible
-- Background equipment changes the 3D viewer immediately
+## What is visible now
+- White English Hoodie: overrides VRoid top materials to bright white.
+- Black Cargo Pants: overrides the lower/one-piece clothing material to dark black.
+- White Sneakers: overrides shoe materials to white.
+- Blue Headphones: adds a simple procedural 3D headphone accessory to the head bone.
+- Background rewards still change the 3D scene.
 
-Important: clothing/accessory equipment is still logical only. It does not change the VRM mesh yet.
+These are technical prototype visuals, not the final polished clothing meshes. The purpose is to prove that Shop -> Inventory -> Equip -> 3D Avatar can work reliably before custom 3D item assets are added.
 
-Upload these three files directly to your GitHub Pages repository root:
-- index.html
-- script.js
-- moe-beginner.vrm
+Upload `index.html`, `script.js`, and `moe-beginner.vrm` to the root of the existing `avatar-development` GitHub Pages repository.

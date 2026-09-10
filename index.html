@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Moe's English Practice — Step 3C</title>
+<title>Moe's English Practice — Step 4A</title>
 <style>
 :root{--blue:#1768ad;--ink:#123b67;--line:#8ec9f7;--panel:#fff;--bg:#eaf7ff;--soft:#eff8ff;--green:#20a66a;--gold:#f5b942}
 *{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Comic Sans MS","Comic Sans",cursive;background:var(--bg);color:var(--ink)}body{display:grid;grid-template-rows:auto 1fr;min-height:100vh}
@@ -21,7 +21,7 @@ main{position:relative;min-height:0;overflow:hidden}#viewer{position:absolute;in
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/","@pixiv/three-vrm":"https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.min.js"}}</script>
 </head>
 <body>
-<header><div class="brand">📖 Moe's English Practice <span class="badge">STEP 3C • INVENTORY • V1</span></div><div class="header-actions"><div class="header-coins">🪙 <span id="headerCoins">0</span> Coins</div><button id="openShop" class="header-btn">🛍️ Shop</button><button id="openInventory" class="header-btn">🎒 Inventory</button></div></header>
+<header><div class="brand">📖 Moe's English Practice <span class="badge">STEP 4A • VISIBLE EQUIPMENT • V1</span></div><div class="header-actions"><div class="header-coins">🪙 <span id="headerCoins">0</span> Coins</div><button id="openShop" class="header-btn">🛍️ Shop</button><button id="openInventory" class="header-btn">🎒 Inventory</button></div></header>
 <main>
 <div id="viewer"></div>
 <section id="profile" class="panel"><h2>Moe</h2><div class="subtitle">Beginner English Learner</div><div class="level-row"><strong>Level <span id="level">1</span></strong><span class="level-pill">BEGINNER</span></div><div class="xp-label"><span>XP</span><span><span id="xp">0</span> / <span id="xpNeed">100</span></span></div><div class="xp-track"><div id="xpFill" class="xp-fill"></div></div><div class="stat-grid"><div class="stat"><b id="coinStat">0</b><span>🪙 Coins</span></div><div class="stat"><b id="totalXp">0</b><span>⭐ Total XP</span></div></div></section>
@@ -29,7 +29,7 @@ main{position:relative;min-height:0;overflow:hidden}#viewer{position:absolute;in
 <section id="status" class="panel"><div id="statusTitle" class="status-title">Starting 3D viewer…</div><div id="detail">Loading ./moe-beginner.vrm</div></section>
 <section id="testTools" class="panel"><div class="tool-title">🧪 Progress Test</div><div class="tool-buttons"><button id="addXp">+25 XP</button><button id="addCoins">+500 Coins</button></div><button id="resetProgress" class="reset-progress">Reset Progress</button></section>
 </main>
-<div id="shopBackdrop" class="modal-backdrop" aria-hidden="true"><section class="modal"><div class="modal-head"><div><h2>🛍️ Beginner Shop</h2><div class="modal-sub">Buy rewards with coins, then equip them from Inventory.</div></div><button id="closeShop" class="close-btn">✕</button></div><div class="summary"><div class="chip">🪙 Balance: <b id="shopCoins">0</b></div><div class="chip">🎒 Owned: <b id="ownedCount">0</b>/6</div></div><div id="shopGrid" class="shop-grid"></div><div class="notice">Step 3C keeps clothing as logical equipment only. Backgrounds already change the 3D viewer. Visible 3D clothes come later.</div></section></div>
+<div id="shopBackdrop" class="modal-backdrop" aria-hidden="true"><section class="modal"><div class="modal-head"><div><h2>🛍️ Beginner Shop</h2><div class="modal-sub">Buy rewards with coins, then equip them from Inventory.</div></div><button id="closeShop" class="close-btn">✕</button></div><div class="summary"><div class="chip">🪙 Balance: <b id="shopCoins">0</b></div><div class="chip">🎒 Owned: <b id="ownedCount">0</b>/6</div></div><div id="shopGrid" class="shop-grid"></div><div class="notice">Step 4A makes equipped rewards visibly affect the current VRM. Clothing is a prototype material override, and headphones are a simple 3D test accessory. This proves the equip-to-avatar pipeline before we add polished custom meshes.</div></section></div>
 <div id="inventoryBackdrop" class="modal-backdrop" aria-hidden="true"><section class="modal"><div class="modal-head"><div><h2>🎒 Inventory & Equipment</h2><div class="modal-sub">Choose what Moe has equipped.</div></div><button id="closeInventory" class="close-btn">✕</button></div><h3>Currently Equipped</h3><div id="equipmentSlots" class="equipment-slots"></div><h3>Your Items</h3><div id="inventoryGrid" class="inventory-grid"></div></section></div>
-<script type="module" src="script.js?v=3c1"></script>
+<script type="module" src="script.js?v=4a1"></script>
 </body></html>
