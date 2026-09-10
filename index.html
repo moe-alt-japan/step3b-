@@ -383,6 +383,19 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 }
 </style>
 
+
+<style id="moe2dNoDuplicateV6">
+/* Permanently hide all legacy textbook-area avatar remnants */
+.textbook-heading .moe2d-home-avatar,
+.textbook-heading .moe2d-home-showcase,
+.textbook-heading #moe2dHomeAvatar,
+.textbook-heading .moe2d-current-avatar-chip,
+.moe2d-home-avatar,
+.moe2d-home-showcase{
+  display:none!important;
+}
+</style>
+
 </head>
 <body>
 
@@ -445,11 +458,7 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
       <p class="eyebrow">YOUR LEARNING DASHBOARD</p>
       <h1 id="dashboardGreeting">Welcome back!</h1>
       <p>Keep your streak alive and continue building your English power.</p>
-      <div class="moe2d-current-avatar-chip">
-        <span>👤 Current Avatar</span>
-        <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
-        <button id="moe2dHomeChangeBtn" type="button">Change</button>
-      </div>
+      
       <div class="dashboard-actions">
         <button id="continueBtn" class="primary-btn">▶ Continue Learning</button>
         <button id="browseBooksBtn" class="secondary-btn">📚 Browse Textbooks</button>
