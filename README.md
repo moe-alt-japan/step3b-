@@ -1,14 +1,10 @@
-# Step 4A — Visible Equipment Prototype
+# Step 4A V2 — self-contained fix
 
-This build keeps the verified working VRM loader from Step 3B/3C and adds the first visible equip-to-avatar pipeline.
+Upload only these two required files to the repository root:
 
-## What is visible now
-- White English Hoodie: overrides VRoid top materials to bright white.
-- Black Cargo Pants: overrides the lower/one-piece clothing material to dark black.
-- White Sneakers: overrides shoe materials to white.
-- Blue Headphones: adds a simple procedural 3D headphone accessory to the head bone.
-- Background rewards still change the 3D scene.
+- `index.html`
+- `moe-beginner.vrm`
 
-These are technical prototype visuals, not the final polished clothing meshes. The purpose is to prove that Shop -> Inventory -> Equip -> 3D Avatar can work reliably before custom 3D item assets are added.
+This build embeds all app JavaScript inside `index.html` to avoid a missing/stale `script.js` on GitHub Pages.
 
-Upload `index.html`, `script.js`, and `moe-beginner.vrm` to the root of the existing `avatar-development` GitHub Pages repository.
+Expected badge: `STEP 4A • VISIBLE EQUIPMENT • V2`.
