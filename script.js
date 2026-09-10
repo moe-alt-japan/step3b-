@@ -16,7 +16,7 @@ function setView(v){const d=Math.max(2.7,modelHeight*1.65),y=modelHeight*.58;con
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));document.getElementById('resetCamera').onclick=()=>setView('front');
 function useGLTF(gltf,label){if(vrm){scene.remove(vrm.scene);VRMUtils.deepDispose(vrm.scene);}vrm=gltf.userData.vrm;if(!vrm)throw new Error('GLTF loaded, but gltf.userData.vrm is empty.');VRMUtils.rotateVRM0(vrm);scene.add(vrm.scene);fit(vrm.scene);title.textContent='✅ Character loaded';detail.textContent=`${label} • VRM ${vrm.meta?.metaVersion||'detected'}`;}
 function showError(e){console.error(e);title.textContent='❌ Character failed to load';detail.textContent=String(e?.stack||e?.message||e);}
-function loadFromUrl(){title.textContent='Loading character…';detail.textContent='Requesting ./moe-beginner.vrm';loader.load('./moe-beginner.vrm?v=5a1',gltf=>{try{useGLTF(gltf,'Loaded from GitHub Pages');}catch(e){showError(e);}},p=>{if(p.total)detail.textContent=`Downloading character… ${Math.round(p.loaded/p.total*100)}%`;else detail.textContent=`Downloading character… ${Math.round(p.loaded/1024/1024)} MB`;},showError);}
+function loadFromUrl(){title.textContent='Loading character…';detail.textContent='Requesting ./moe-beginner.vrm';loader.load('./moe-beginner.vrm?v=5b2',gltf=>{try{useGLTF(gltf,'Loaded from GitHub Pages');}catch(e){showError(e);}},p=>{if(p.total)detail.textContent=`Downloading character… ${Math.round(p.loaded/p.total*100)}%`;else detail.textContent=`Downloading character… ${Math.round(p.loaded/1024/1024)} MB`;},showError);}
 const clock=new THREE.Clock();renderer.setAnimationLoop(()=>{const dt=Math.min(clock.getDelta(),.05);if(vrm)vrm.update(dt);controls.update();renderer.render(scene,camera);});
 
 // ============================================================
@@ -138,7 +138,6 @@ editProfileBtn?.addEventListener('click',()=>openProfileSetup(true));
 cancelNicknameBtn?.addEventListener('click',closeProfileSetup);
 applyStudentProfile();
 // Show nickname setup after a character has been chosen for the first time.
-const originalContinueHandler=continueBtn?.onclick;
-continueBtn?.addEventListener('click',()=>{setTimeout(()=>{if(localStorage.getItem(CHARACTER_KEY)&&!studentProfile.nickname)openProfileSetup(false);},80);});
+continueCharacter.addEventListener('click',()=>{setTimeout(()=>{if(localStorage.getItem(CHARACTER_KEY)&&!studentProfile.nickname)openProfileSetup(false);},80);});
 // Existing Step 5A users get profile setup once on their next visit.
 if(localStorage.getItem(CHARACTER_KEY)&&!studentProfile.nickname){setTimeout(()=>openProfileSetup(false),350);}
