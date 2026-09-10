@@ -20,3 +20,7 @@ This is a safe test project for real separate 3D wearables.
 There is intentionally **no fake hoodie mesh** bundled in this V1. A real hoodie that bends with Moe's body must be a compatible skinned/rigged 3D asset. When we obtain/create `english-hoodie.glb`, put it in `wearables/` and the site will try to load it automatically.
 
 This repo is for proving wearable compatibility before bringing the method back into `avatar-development`.
+
+
+## V3 Natural Idle
+The Relaxed pose now lowers Moe’s arms closer to his waist with softer shoulders, elbows, and hands.
