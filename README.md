@@ -1,11 +1,9 @@
-# Step 4A — Visible Equipment V3 (Syntax Fix)
+# Step 4A V4 — Safe Visible Equipment
 
-This build fixes the JavaScript syntax error that prevented the entire viewer from starting in V2.
+Built directly from the confirmed-working Step 3C files. The VRM loader is kept intact.
 
-Upload these files to the root of your `avatar-development` repository:
-- `index.html`
-- `moe-beginner.vrm`
+Visible 3D change in this safety build:
+- Blue Headphones: adds a simple real 3D accessory to the avatar head.
+- Background rewards still visibly change the scene.
 
-No `script.js` is needed.
-
-Look for `STEP 4A • VISIBLE EQUIPMENT • V3 • SYNTAX FIX` in the header.
+Clothing items remain inventory/equipment state only for this build. This deliberately changes one 3D feature at a time.
