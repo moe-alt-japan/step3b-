@@ -1,20 +1,11 @@
-# Avatar Step 5A — Character Selection V1
+# Step 5B — Student Profile V1
+Built directly from the confirmed-working Step 5A character-select version.
 
-Built on the confirmed-working Step 3C VRM loader.
+Adds only:
+- First-time nickname setup after character selection
+- Nickname saved in localStorage
+- Nickname shown on the profile card
+- Edit Nickname button
+- 1–16 character validation
 
-## What is new
-- First-time **Choose Your Character** screen
-- **Boy** selects Moe and continues to the working 3D viewer
-- **Girl** shows **Coming Soon**
-- Character choice is remembered with localStorage
-- **Change Character** button lets you reopen the selector for testing
-- Existing XP, Coins, Shop, Inventory, camera controls, and VRM loader are preserved
-
-## GitHub Pages
-Upload these four files to the root of your existing test/development repo:
-- `index.html`
-- `script.js`
-- `moe-beginner.vrm`
-- `README.md`
-
-If GitHub Pages was already enabled, wait a short time after replacing the files, then refresh the site.
+The working VRM loader, T-pose, camera controls, XP, Coins, Shop, Inventory, and Change Character are preserved.

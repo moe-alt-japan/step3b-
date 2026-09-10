@@ -109,3 +109,36 @@ if(savedCharacter==='boy'){
   showCharacterSelect();
 }
 
+
+// STEP 5B — student nickname/profile
+const PROFILE_KEY='moeStudentProfileV1';
+const profileSetup=document.getElementById('profileSetup');
+const nicknameInput=document.getElementById('nicknameInput');
+const nicknameNote=document.getElementById('nicknameNote');
+const saveNicknameBtn=document.getElementById('saveNickname');
+const cancelNicknameBtn=document.getElementById('cancelNickname');
+const editProfileBtn=document.getElementById('editProfile');
+const studentNameEl=document.getElementById('studentName');
+let studentProfile={nickname:''};
+try{const x=JSON.parse(localStorage.getItem(PROFILE_KEY));if(x&&typeof x.nickname==='string')studentProfile=x;}catch(_e){}
+function cleanNickname(v){return v.trim().replace(/\s+/g,' ').slice(0,16);}
+function applyStudentProfile(){studentNameEl.textContent=studentProfile.nickname||'Moe';}
+function openProfileSetup(editing=false){
+ profileSetup.classList.add('open');profileSetup.setAttribute('aria-hidden','false');
+ nicknameInput.value=studentProfile.nickname||''; nicknameInput.focus();
+ cancelNicknameBtn.style.display=editing&&studentProfile.nickname?'inline-block':'none';
+ saveNicknameBtn.textContent=editing?'Save Nickname':'Start Adventure';
+ nicknameNote.textContent='1–16 characters • You can change this later.';
+}
+function closeProfileSetup(){profileSetup.classList.remove('open');profileSetup.setAttribute('aria-hidden','true');}
+function saveNickname(){const n=cleanNickname(nicknameInput.value);if(!n){nicknameNote.textContent='Please enter a nickname first.';nicknameInput.focus();return;}studentProfile.nickname=n;localStorage.setItem(PROFILE_KEY,JSON.stringify(studentProfile));applyStudentProfile();closeProfileSetup();}
+saveNicknameBtn?.addEventListener('click',saveNickname);
+nicknameInput?.addEventListener('keydown',e=>{if(e.key==='Enter')saveNickname();});
+editProfileBtn?.addEventListener('click',()=>openProfileSetup(true));
+cancelNicknameBtn?.addEventListener('click',closeProfileSetup);
+applyStudentProfile();
+// Show nickname setup after a character has been chosen for the first time.
+const originalContinueHandler=continueBtn?.onclick;
+continueBtn?.addEventListener('click',()=>{setTimeout(()=>{if(localStorage.getItem(CHARACTER_KEY)&&!studentProfile.nickname)openProfileSetup(false);},80);});
+// Existing Step 5A users get profile setup once on their next visit.
+if(localStorage.getItem(CHARACTER_KEY)&&!studentProfile.nickname){setTimeout(()=>openProfileSetup(false),350);}
