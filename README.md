@@ -1,21 +1,18 @@
-# Moe's English Practice — Step 3B Basic Shop V1
+# Moe's English Practice — Step 3C Inventory v1
 
-This build is based on the working Step 3A VRM loader.
+This build is based on the known-working Step 3B VRM loader.
 
-## What was added
-- Beginner Shop button and modal
-- 6 sample cosmetic rewards
-- Buy / Equip logic
-- Coin balance updates
-- Owned/equipped state saved with localStorage
-- Background rewards visibly change the 3D viewer
-- Progress from Step 3A can migrate automatically if it exists in the same browser
+New in Step 3C:
+- Inventory button and modal
+- Five equipment slots: Top, Bottom, Shoes, Accessory, Background
+- Buy in Shop, then Equip/Unequip in Inventory
+- Purchased items and equipped choices persist with localStorage
+- Step 3B progress is migrated automatically when possible
+- Background equipment changes the 3D viewer immediately
 
-## Important
-Clothing/accessory purchases are system-only in Step 3B. They do not replace VRM meshes yet.
-The working VRM loader is intentionally kept isolated from the Shop code.
+Important: clothing/accessory equipment is still logical only. It does not change the VRM mesh yet.
 
-Upload these three files directly to the GitHub repository root:
+Upload these three files directly to your GitHub Pages repository root:
 - index.html
 - script.js
 - moe-beginner.vrm
