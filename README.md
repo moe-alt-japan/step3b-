@@ -1,16 +1,22 @@
-# NH Interactive V7 — Generic Shop + Pants Test
+# NH Interactive – 2D Shop Pilot v1
 
-Development build with unlimited testing coins.
+Built from the clean NH Interactive v1.9.8 source.
 
-Changes:
-- Shop title `White English Hoodie` → `Hoodie`
-- Shop title `Black Cargo Pants` → `Pants`
-- Pants now use the correct `pants` inventory slot
-- Added real `moe-pants.vrm` model
-- Equipping Pants shows the real pants VRM when Hoodie is not equipped
-- Hoodie remains the real `moe-hoodie.vrm`
-- Beginner uses `moe-beginner.vrm`
+## What changed
+- No VRM / Three.js / 3D avatar files.
+- Added lightweight 2D Avatar + Shop buttons.
+- Fixed-outfit flow: Buy -> Wear.
+- Beginner Outfit + Casual Hoodie Outfit are available.
+- Test mode keeps 999,999 coins.
+- Existing NH Interactive activities remain intact.
 
-Note: Hoodie + Pants together will need one combined VRM model in the current whole-model system. Hoodie currently has visual priority when both slots are equipped.
+## Why this build
+This is a proof that the public classroom version can use small 2D WebP outfit images instead of large VRM files.
 
-V8: Replaced Pants VRM with corrected white T-shirt + black pants export; bumped pants cache version to v=61.
+## Files
+- index.html
+- moe-beginner-2d.webp
+- moe-hoodie-2d.webp
+- new-horizon-1.png
+- new-horizon-2.png
+- new-horizon-3.png
