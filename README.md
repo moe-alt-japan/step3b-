@@ -1,19 +1,13 @@
-# NH Interactive v2.1 — Inventory Studio
+# NH Interactive — V5 Real Hoodie Test
 
-This version keeps the working NH Interactive learning site, avatar, XP, levels, coins, Shop, Inventory, Adventure, and saved progress.
+First real visible Shop outfit change.
 
-New inventory design:
-- Large item grid on the left
-- Live 3D Moe preview in the center
-- Equipped category slots on the right
-- Head, Top, Pants, Shoes, Socks, Gloves, Belt, and Background slots
-- Click an owned inventory item to equip/unequip
-- Existing old Bottom/Accessory equipment is migrated to Pants/Head
-- Coin balance and student level shown inside Inventory
+Required GitHub Pages files:
+- index.html
+- moe-beginner.vrm
+- moe-hoodie.vrm
+- new-horizon-1.png
+- new-horizon-2.png
+- new-horizon-3.png
 
-Real clothing meshes are still pending the VRoid/XWear asset step. Background rewards continue to work visibly now.
-
-
-## v4 Beginner Avatar
-- Replaced the tactical VRM with the new VRoid beginner model (white T-shirt starter outfit).
-- Kept Inventory Studio, Shop, XP, coins, profile, and NH activities unchanged.
+Test: earn/use coins -> Shop -> buy White English Hoodie -> Inventory -> equip. Moe should switch from the white T-shirt VRM to the white hoodie VRM. Unequip returns to the beginner T-shirt model.
