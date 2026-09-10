@@ -1,11 +1,14 @@
-# Step 5B — Student Profile V1
-Built directly from the confirmed-working Step 5A character-select version.
+# Step 6A — Reward Engine + Level Up
 
-Adds only:
-- First-time nickname setup after character selection
-- Nickname saved in localStorage
-- Nickname shown on the profile card
-- Edit Nickname button
-- 1–16 character validation
+Built on the confirmed-working Step 5B student profile.
 
-The working VRM loader, T-pose, camera controls, XP, Coins, Shop, Inventory, and Change Character are preserved.
+## New in this version
+- Reusable XP + coin reward engine
+- XP automatically rolls into levels
+- Reward toast animation
+- LEVEL UP celebration
+- Progress persists with localStorage
+- Temporary Practice / Quiz / Boss test buttons
+- `window.MoeRewards.grant({xp, coins, label})` can later be called by New Horizon activities
+
+Upload `index.html`, `script.js`, `moe-beginner.vrm`, and this README to the same GitHub Pages repo.
