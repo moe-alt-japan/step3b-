@@ -1180,8 +1180,8 @@ showStudentSetup(false);syncStudentUI();
 /* v2.0 Shop + Inventory Integration */
 const NH_SHOP_KEY="nhInteractiveShopV1";
 const SHOP_ITEMS=[
-  {id:"white_hoodie",name:"White English Hoodie",icon:"🧥",price:500,type:"top",desc:"A clean reward hoodie for Moe."},
-  {id:"black_cargo",name:"Black Cargo Pants",icon:"👖",price:400,type:"bottom",desc:"Sporty dark cargo pants."},
+  {id:"white_hoodie",name:"Hoodie",icon:"🧥",price:500,type:"top",desc:"A comfy hoodie for Moe. More colors coming soon."},
+  {id:"black_cargo",name:"Pants",icon:"👖",price:400,type:"pants",desc:"A new pair of pants for Moe. More styles and colors coming soon."},
   {id:"white_sneakers",name:"White Sneakers",icon:"👟",price:350,type:"shoes",desc:"Simple bright sneakers."},
   {id:"headphones",name:"Blue Headphones",icon:"🎧",price:650,type:"accessory",desc:"A premium study accessory."},
   {id:"school_bg",name:"School Background",icon:"🏫",price:300,type:"background",desc:"A bright school-sky avatar background."},
@@ -1282,11 +1282,16 @@ import { VRMLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
 const $a=id=>document.getElementById(id);
 let renderer,scene,camera,controls,vrm,started=false,raf=0,loader,currentAvatarFile='';
 const BASE_AVATAR='./moe-beginner.vrm?v=50';
-const HOODIE_AVATAR='./moe-hoodie.vrm?v=50';
+const HOODIE_AVATAR='./moe-hoodie.vrm?v=60';
+const PANTS_AVATAR='./moe-pants.vrm?v=60';
 function resize(){if(!renderer)return;const c=$a('avatarCanvas'),r=c.getBoundingClientRect();renderer.setSize(Math.max(1,r.width),Math.max(1,r.height),false);camera.aspect=r.width/Math.max(1,r.height);camera.updateProjectionMatrix();}
-function desiredAvatar(equipped={}){return equipped.top==='white_hoodie'?HOODIE_AVATAR:BASE_AVATAR;}
+function desiredAvatar(equipped={}){
+  if(equipped.top==='white_hoodie') return HOODIE_AVATAR;
+  if(equipped.pants==='black_cargo') return PANTS_AVATAR;
+  return BASE_AVATAR;
+}
 function getEquipment(){try{return JSON.parse(localStorage.getItem('nhInteractiveShopV1')||'{}').equipped||{}}catch{return {}}}
-function loadAvatar(file){if(!loader||currentAvatarFile===file)return;currentAvatarFile=file;$a('avatarStatus').textContent=file===HOODIE_AVATAR?'Loading White Hoodie…':'Loading Beginner Moe…';loader.load(file,gltf=>{const next=gltf.userData.vrm;VRMUtils.removeUnnecessaryVertices(gltf.scene);VRMUtils.combineSkeletons(gltf.scene);next.scene.rotation.y=Math.PI;if(vrm){scene.remove(vrm.scene);try{VRMUtils.deepDispose(vrm.scene)}catch{}}vrm=next;scene.add(vrm.scene);$a('avatarStatus').textContent=file===HOODIE_AVATAR?'✅ White Hoodie equipped · drag to rotate · wheel to zoom':'✅ Beginner Moe loaded · drag to rotate · wheel to zoom';},undefined,e=>{$a('avatarStatus').textContent='❌ Avatar could not load. Check both VRM files.';currentAvatarFile='';console.error(e)});}
+function loadAvatar(file){if(!loader||currentAvatarFile===file)return;currentAvatarFile=file;const label=file===HOODIE_AVATAR?'Hoodie':file===PANTS_AVATAR?'Pants':'Beginner Moe';$a('avatarStatus').textContent=`Loading ${label}…`;loader.load(file,gltf=>{const next=gltf.userData.vrm;VRMUtils.removeUnnecessaryVertices(gltf.scene);VRMUtils.combineSkeletons(gltf.scene);next.scene.rotation.y=Math.PI;if(vrm){scene.remove(vrm.scene);try{VRMUtils.deepDispose(vrm.scene)}catch{}}vrm=next;scene.add(vrm.scene);$a('avatarStatus').textContent=`✅ ${label} loaded · drag to rotate · wheel to zoom`;},undefined,e=>{$a('avatarStatus').textContent='❌ Avatar could not load. Check the VRM files.';currentAvatarFile='';console.error(e)});}
 function startAvatar(){if(started){resize();loadAvatar(desiredAvatar(getEquipment()));return;}started=true;const canvas=$a('avatarCanvas');renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));scene=new THREE.Scene();scene.background=new THREE.Color(0xcfefff);camera=new THREE.PerspectiveCamera(30,1,.1,100);camera.position.set(0,1.35,4.2);controls=new OrbitControls(camera,canvas);controls.target.set(0,1.15,0);controls.enableDamping=true;scene.add(new THREE.HemisphereLight(0xffffff,0x71849a,2.2));const dl=new THREE.DirectionalLight(0xffffff,2.2);dl.position.set(2,4,3);scene.add(dl);const floor=new THREE.Mesh(new THREE.CircleGeometry(1.35,64),new THREE.MeshStandardMaterial({color:0xffffff,roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=0;scene.add(floor);resize();window.addEventListener('resize',resize);loader=new GLTFLoader();loader.register(p=>new VRMLoaderPlugin(p));loadAvatar(desiredAvatar(getEquipment()));const clock=new THREE.Clock();function loop(){raf=requestAnimationFrame(loop);const d=clock.getDelta();if(vrm)vrm.update(d);controls.update();renderer.render(scene,camera)}loop();}
 function applyAvatarEquipment(equipped={}){if(!scene)return;const bg=equipped.background;if(bg==='school_bg')scene.background=new THREE.Color(0xbfe3ff);else if(bg==='sunset_bg')scene.background=new THREE.Color(0xffc9a8);else scene.background=new THREE.Color(0xcfefff);loadAvatar(desiredAvatar(equipped));}
 window.addEventListener('nh-equipment-change',e=>applyAvatarEquipment(e.detail||{}));

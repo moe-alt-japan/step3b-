@@ -1,8 +1,14 @@
-# NH Interactive V6 — Unlimited Coins Test Build
+# NH Interactive V7 — Generic Shop + Pants Test
 
-Testing build based on V5 Real Hoodie.
+Development build with unlimited testing coins.
 
-- Starts with 999,999,999 coins.
-- Shop purchases do not deduct coins while test mode is enabled.
-- Real beginner ↔ hoodie VRM switching remains enabled.
-- Intended for testing Shop and Inventory quickly.
+Changes:
+- Shop title `White English Hoodie` → `Hoodie`
+- Shop title `Black Cargo Pants` → `Pants`
+- Pants now use the correct `pants` inventory slot
+- Added real `moe-pants.vrm` model
+- Equipping Pants shows the real pants VRM when Hoodie is not equipped
+- Hoodie remains the real `moe-hoodie.vrm`
+- Beginner uses `moe-beginner.vrm`
+
+Note: Hoodie + Pants together will need one combined VRM model in the current whole-model system. Hoodie currently has visual priority when both slots are equipped.
