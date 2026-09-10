@@ -12,3 +12,8 @@ New inventory design:
 - Coin balance and student level shown inside Inventory
 
 Real clothing meshes are still pending the VRoid/XWear asset step. Background rewards continue to work visibly now.
+
+
+## v4 Beginner Avatar
+- Replaced the tactical VRM with the new VRoid beginner model (white T-shirt starter outfit).
+- Kept Inventory Studio, Shop, XP, coins, profile, and NH activities unchanged.
