@@ -1,14 +1,14 @@
-# NH Interactive v2.0 — Avatar + Rewards Pilot
+# NH Interactive v2.0 — Shop & Inventory Integration
 
-Built from the uploaded NH Interactive v1.9.8 source.
+Built from the working Avatar + Rewards pilot.
 
-Pilot additions:
-- First-time Boy/Moe character choice
-- Student nickname/profile saved on device
-- Header coin balance + student name
-- 3D Moe avatar modal using the known-working VRM loader
-- Existing real Quiz remains up to 40 questions
-- Correct Quiz answer: +10 XP and +2 coins
-- Adventure coins share the same coin wallet
+Adds:
+- Shop button in the main header
+- Inventory button in the main header
+- One shared coin balance for activities, Adventure, and purchases
+- Buy / Equip / Unequip with localStorage saving
+- Six starter rewards
+- School and Sunset backgrounds visibly change the 3D avatar viewer
+- Clothing/accessories are saved logically until real VRoid/XWear assets are ready
 
-Upload all five files together to GitHub Pages. Give Pages a few minutes before testing.
+Keep all six files together when uploading to GitHub Pages.
