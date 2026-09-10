@@ -311,6 +311,159 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 }
 </style>
 
+
+<style id="moe2dHeroAvatarV4Styles">
+/* Remove older homepage avatar leftovers */
+.moe2d-home-showcase,
+.moe2d-home-character-wrap,
+.moe2d-home-current-card,
+.moe2d-home-avatar{display:none!important}
+
+/* Hero/greeting character */
+.moe2d-greeting-avatar{
+  position:absolute;
+  left:22px;
+  bottom:0;
+  width:360px;
+  height:100%;
+  min-height:290px;
+  z-index:2;
+  pointer-events:none;
+}
+.moe2d-avatar-art-frame{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:335px;
+  height:315px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  background:transparent!important;
+}
+.moe2d-avatar-art-frame img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center bottom;
+  background:transparent!important;
+  border:0;
+  filter:
+    drop-shadow(2px 0 0 #2e8df2)
+    drop-shadow(-2px 0 0 #2e8df2)
+    drop-shadow(0 2px 0 #2e8df2)
+    drop-shadow(0 -2px 0 #2e8df2)
+    drop-shadow(0 12px 16px rgba(25,67,103,.18));
+  transform:scale(1.08);
+  transform-origin:center bottom;
+}
+.moe2d-avatar-speech{
+  position:absolute;
+  left:8px;
+  top:34px;
+  max-width:150px;
+  padding:11px 13px;
+  border-radius:22px;
+  background:#fff;
+  border:2px solid #2e8df2;
+  color:#143b63;
+  font-weight:900;
+  font-size:14px;
+  line-height:1.2;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(36,91,131,.10);
+}
+
+/* Make first big greeting panel suitable for the character */
+.hero-card,
+.dashboard-hero,
+.hero,
+[class*="hero-banner"],
+[class*="dashboard-banner"]{
+  position:relative;
+  overflow:hidden;
+}
+
+/* Give greeting content room so Moe doesn't cover it */
+.hero-card > *:not(.moe2d-greeting-avatar),
+.dashboard-hero > *:not(.moe2d-greeting-avatar),
+.hero > *:not(.moe2d-greeting-avatar),
+[class*="hero-banner"] > *:not(.moe2d-greeting-avatar),
+[class*="dashboard-banner"] > *:not(.moe2d-greeting-avatar){
+  position:relative;
+  z-index:3;
+}
+
+/* Current avatar info chip */
+.moe2d-current-avatar-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:8px 0 12px;
+  padding:8px 10px;
+  background:rgba(255,255,255,.92);
+  border:1px solid #c8e1f3;
+  border-radius:14px;
+  box-shadow:0 6px 16px rgba(39,77,108,.08);
+  font-size:12px;
+}
+.moe2d-current-avatar-chip span{
+  color:#2b7ed0;
+  font-weight:900;
+}
+.moe2d-current-avatar-chip strong{
+  color:#173b5d;
+}
+.moe2d-current-avatar-chip button{
+  border:1px solid #2e8df2;
+  background:#fff;
+  color:#1674cf;
+  border-radius:9px;
+  padding:5px 9px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* Desktop spacing: shift greeting content right */
+@media(min-width:901px){
+  .hero-card,
+  .dashboard-hero,
+  .hero,
+  [class*="hero-banner"],
+  [class*="dashboard-banner"]{
+    padding-left:390px!important;
+    min-height:300px!important;
+  }
+}
+@media(max-width:900px){
+  .moe2d-greeting-avatar{
+    width:250px;
+    min-height:225px;
+    left:8px;
+  }
+  .moe2d-avatar-art-frame{
+    width:235px;
+    height:230px;
+  }
+  .moe2d-avatar-speech{
+    font-size:11px;
+    max-width:115px;
+    top:18px;
+  }
+}
+@media(max-width:700px){
+  .moe2d-greeting-avatar{display:none}
+  .hero-card,
+  .dashboard-hero,
+  .hero,
+  [class*="hero-banner"],
+  [class*="dashboard-banner"]{
+    padding-left:inherit!important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -385,6 +538,13 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 
   <div class="dashboard-grid">
     <section class="dashboard-panel continue-panel">
+<div id="moe2dGreetingAvatar" class="moe2d-greeting-avatar">
+  <div class="moe2d-avatar-art-frame">
+    <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
+  </div>
+  <div class="moe2d-avatar-speech">Let's learn English<br>and have fun! 😊</div>
+</div>
+
       <div class="panel-title"><div><p class="eyebrow">PICK UP WHERE YOU LEFT OFF</p><h2>Continue Learning</h2></div><span class="panel-icon">🚀</span></div>
       <div id="continueCard" class="continue-card"><p>No recent unit yet.</p><small>Choose a textbook below to begin.</small></div>
     </section>
@@ -403,15 +563,6 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 
   <div id="textbookSection" class="textbook-heading">
     <div><p class="eyebrow">CHOOSE YOUR GRADE</p><h2>New Horizon Textbooks</h2><p>Choose a textbook and start learning.</p></div>
-    <div class="moe2d-home-showcase" id="moe2dHomeAvatar">
-      <div class="moe2d-home-character-wrap">
-        <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
-      </div>
-      <div class="moe2d-home-current-card">
-        <span>👤 CURRENT AVATAR</span>
-        <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
-        <button id="moe2dHomeChangeBtn" type="button">Change Avatar →</button>
-      </div>
     </div>
       <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
       <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
@@ -1110,7 +1261,13 @@ function renderDashboard(){
   let recent=null;try{recent=JSON.parse(localStorage.getItem("portalRecent")||"null")}catch{}
   if(recent){
     const key=`studied-${recent.grade}-${recent.label}`,count=JSON.parse(localStorage.getItem(key)||"[]").length,pct=recent.wordCount?Math.round(count/recent.wordCount*100):0;
-    $("continueCard").innerHTML=`<h3>${recent.title}</h3><p>${PORTAL_DATA[recent.grade]?.title||""} · ${recent.label}</p><div class="progress-track"><i style="width:${pct}%"></i></div><p>${count} of ${recent.wordCount} words studied · ${pct}%</p><button id="resumeRecentBtn" class="primary-btn">Continue →</button>`;
+    $("continueCard").innerHTML=`<h3>${recent.title}</h3><p>${PORTAL_DATA[recent.grade]?.title||""} · ${recent.label}</p><div class="progress-track"><i style="width:${pct}%"></i></div><p>${count} of ${recent.wordCount} words studied · ${pct}%</p><button id="resumeRecentBtn" class="primary-btn">Continue →
+<div class="moe2d-current-avatar-chip">
+  <span>👤 Current Avatar</span>
+  <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
+  <button id="moe2dHomeChangeBtn" type="button">Change</button>
+</div>
+</button>`;
     $("resumeRecentBtn").onclick=()=>{const d=recent.label.startsWith("Unit ")?PORTAL_DATA[recent.grade].units[recent.label.replace("Unit ","")]:[...(PORTAL_DATA[recent.grade].extras||[])].find(x=>x.title===recent.label);if(d){grade=recent.grade;openContent(d,recent.label)}};
     $("continueBtn").disabled=false;$("continueBtn").onclick=$("resumeRecentBtn").onclick;
   }else{$("continueBtn").disabled=true;$("continueBtn").onclick=()=>$("textbookSection").scrollIntoView({behavior:"smooth"})}
@@ -1389,6 +1546,17 @@ renderAdventure();
 
  save();renderAll();
 })();
+</script>
+
+
+<script id="moe2dHeroPatchV4">
+document.addEventListener("DOMContentLoaded",()=>{
+  const btn=document.getElementById("moe2dHomeChangeBtn");
+  const inv=document.getElementById("moe2dInventoryBtn");
+  if(btn && inv){
+    btn.onclick=()=>inv.click();
+  }
+});
 </script>
 
 </body>
