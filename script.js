@@ -47,15 +47,16 @@ function addBoneRotation(name,x=0,y=0,z=0){
 function applyRelaxedPose(){
   if(!vrm) return;
   resetPose();
-  // Natural idle: arms hang close to the waist, elbows slightly soft, hands relaxed.
-  addBoneRotation('leftShoulder', 0, 0, THREE.MathUtils.degToRad(-3));
-  addBoneRotation('rightShoulder', 0, 0, THREE.MathUtils.degToRad(3));
-  addBoneRotation('leftUpperArm', THREE.MathUtils.degToRad(2), 0, THREE.MathUtils.degToRad(-80));
-  addBoneRotation('rightUpperArm', THREE.MathUtils.degToRad(2), 0, THREE.MathUtils.degToRad(80));
-  addBoneRotation('leftLowerArm', 0, THREE.MathUtils.degToRad(-7), THREE.MathUtils.degToRad(-5));
-  addBoneRotation('rightLowerArm', 0, THREE.MathUtils.degToRad(7), THREE.MathUtils.degToRad(5));
-  addBoneRotation('leftHand', THREE.MathUtils.degToRad(-2), 0, THREE.MathUtils.degToRad(-2));
-  addBoneRotation('rightHand', THREE.MathUtils.degToRad(-2), 0, THREE.MathUtils.degToRad(2));
+  // Soft game-idle: shoulders released, upper arms almost vertical,
+  // elbows gently bent so the hands sit naturally beside the hips.
+  addBoneRotation('leftShoulder', 0, 0, THREE.MathUtils.degToRad(0));
+  addBoneRotation('rightShoulder', 0, 0, THREE.MathUtils.degToRad(0));
+  addBoneRotation('leftUpperArm', THREE.MathUtils.degToRad(4), THREE.MathUtils.degToRad(-2), THREE.MathUtils.degToRad(-89));
+  addBoneRotation('rightUpperArm', THREE.MathUtils.degToRad(4), THREE.MathUtils.degToRad(2), THREE.MathUtils.degToRad(89));
+  addBoneRotation('leftLowerArm', 0, THREE.MathUtils.degToRad(-5), THREE.MathUtils.degToRad(-9));
+  addBoneRotation('rightLowerArm', 0, THREE.MathUtils.degToRad(5), THREE.MathUtils.degToRad(9));
+  addBoneRotation('leftHand', THREE.MathUtils.degToRad(-1), THREE.MathUtils.degToRad(1), THREE.MathUtils.degToRad(1));
+  addBoneRotation('rightHand', THREE.MathUtils.degToRad(-1), THREE.MathUtils.degToRad(-1), THREE.MathUtils.degToRad(-1));
   addBoneRotation('chest', THREE.MathUtils.degToRad(1), 0, 0);
   addBoneRotation('head', THREE.MathUtils.degToRad(-1), 0, 0);
   title.textContent='✅ Character loaded • Relaxed pose';
@@ -75,7 +76,7 @@ document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.data
 document.getElementById('relaxedPose').onclick=applyRelaxedPose;document.getElementById('tPose').onclick=applyTPose;
 function useVRM(gltf,label){vrm=gltf.userData.vrm;if(!vrm)throw new Error('GLTF loaded, but gltf.userData.vrm is empty.');VRMUtils.rotateVRM0(vrm);scene.add(vrm.scene);fit(vrm.scene);captureBasePose();applyRelaxedPose();detail.textContent=`${label} • VRM ${vrm.meta?.metaVersion||'detected'} • relaxed pose enabled`;tryAutoWearable();}
 function showError(e,prefix='Character failed to load'){console.error(e);title.textContent='❌ '+prefix;detail.textContent=String(e?.stack||e?.message||e);}
-vrmLoader.load('./moe-beginner.vrm?v=4b3',gltf=>{try{useVRM(gltf,'Loaded from GitHub Pages');}catch(e){showError(e);}},p=>{if(p.total)detail.textContent=`Downloading character… ${Math.round(p.loaded/p.total*100)}%`;else detail.textContent=`Downloading character… ${Math.round(p.loaded/1024/1024)} MB`;},e=>showError(e));
+vrmLoader.load('./moe-beginner.vrm?v=4b4',gltf=>{try{useVRM(gltf,'Loaded from GitHub Pages');}catch(e){showError(e);}},p=>{if(p.total)detail.textContent=`Downloading character… ${Math.round(p.loaded/p.total*100)}%`;else detail.textContent=`Downloading character… ${Math.round(p.loaded/1024/1024)} MB`;},e=>showError(e));
 const clock=new THREE.Clock();renderer.setAnimationLoop(()=>{const dt=Math.min(clock.getDelta(),.05);if(vrm)vrm.update(dt);controls.update();renderer.render(scene,camera);});
 
 const boneSelect=document.getElementById('attachBone'),state=document.getElementById('wearableState');
@@ -88,5 +89,5 @@ document.getElementById('reattach').onclick=attachWearable;document.getElementBy
 document.getElementById('resetFit').onclick=()=>{document.getElementById('scale').value='1';document.getElementById('x').value='0';document.getElementById('y').value='0';document.getElementById('z').value='0';document.getElementById('ry').value='0';applyFit();};
 function useWearableGLTF(gltf,label){clearWearable();wearable=gltf.scene;wearableSource=label;wearable.traverse(o=>{if(o.isMesh){o.castShadow=true;o.frustumCulled=false;}});attachWearable();}
 function loadWearableUrl(url,label,onFail){glbLoader.load(url,gltf=>{try{useWearableGLTF(gltf,label);}catch(e){state.textContent='Wearable error: '+e.message;state.classList.add('warn');}},undefined,e=>{if(onFail)onFail(e);else{state.textContent='Could not load wearable: '+(e?.message||e);state.classList.add('warn');}});}
-function tryAutoWearable(){loadWearableUrl('./wearables/english-hoodie.glb?v=4b3','english-hoodie.glb',()=>{state.textContent='No bundled hoodie yet. Choose a .glb wearable from your computer when you have one.';state.classList.add('warn');});}
+function tryAutoWearable(){loadWearableUrl('./wearables/english-hoodie.glb?v=4b4','english-hoodie.glb',()=>{state.textContent='No bundled hoodie yet. Choose a .glb wearable from your computer when you have one.';state.classList.add('warn');});}
 document.getElementById('wearableFile').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const url=URL.createObjectURL(f);loadWearableUrl(url,f.name,()=>{});});

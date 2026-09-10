@@ -22,5 +22,8 @@ There is intentionally **no fake hoodie mesh** bundled in this V1. A real hoodie
 This repo is for proving wearable compatibility before bringing the method back into `avatar-development`.
 
 
-## V3 Natural Idle
+## V4 Soft Idle
 The Relaxed pose now lowers Moe’s arms closer to his waist with softer shoulders, elbows, and hands.
+
+
+V4 pose tuning: arms almost vertical, softer elbows, hands closer to hips.
