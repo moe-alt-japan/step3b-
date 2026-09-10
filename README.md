@@ -1,10 +1,11 @@
-# Step 4A V2 — self-contained fix
+# Step 4A — Visible Equipment V3 (Syntax Fix)
 
-Upload only these two required files to the repository root:
+This build fixes the JavaScript syntax error that prevented the entire viewer from starting in V2.
 
+Upload these files to the root of your `avatar-development` repository:
 - `index.html`
 - `moe-beginner.vrm`
 
-This build embeds all app JavaScript inside `index.html` to avoid a missing/stale `script.js` on GitHub Pages.
+No `script.js` is needed.
 
-Expected badge: `STEP 4A • VISIBLE EQUIPMENT • V2`.
+Look for `STEP 4A • VISIBLE EQUIPMENT • V3 • SYNTAX FIX` in the header.

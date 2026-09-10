@@ -21,7 +21,7 @@ main{position:relative;min-height:0;overflow:hidden}#viewer{position:absolute;in
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/","@pixiv/three-vrm":"https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.min.js"}}</script>
 </head>
 <body>
-<header><div class="brand">📖 Moe's English Practice <span class="badge">STEP 4A • VISIBLE EQUIPMENT • V2</span></div><div class="header-actions"><div class="header-coins">🪙 <span id="headerCoins">0</span> Coins</div><button id="openShop" class="header-btn">🛍️ Shop</button><button id="openInventory" class="header-btn">🎒 Inventory</button></div></header>
+<header><div class="brand">📖 Moe's English Practice <span class="badge">STEP 4A • VISIBLE EQUIPMENT • V3 • SYNTAX FIX</span></div><div class="header-actions"><div class="header-coins">🪙 <span id="headerCoins">0</span> Coins</div><button id="openShop" class="header-btn">🛍️ Shop</button><button id="openInventory" class="header-btn">🎒 Inventory</button></div></header>
 <main>
 <div id="viewer"></div>
 <section id="profile" class="panel"><h2>Moe</h2><div class="subtitle">Beginner English Learner</div><div class="level-row"><strong>Level <span id="level">1</span></strong><span class="level-pill">BEGINNER</span></div><div class="xp-label"><span>XP</span><span><span id="xp">0</span> / <span id="xpNeed">100</span></span></div><div class="xp-track"><div id="xpFill" class="xp-fill"></div></div><div class="stat-grid"><div class="stat"><b id="coinStat">0</b><span>🪙 Coins</span></div><div class="stat"><b id="totalXp">0</b><span>⭐ Total XP</span></div></div></section>
@@ -88,9 +88,9 @@ const clock=new THREE.Clock();renderer.setAnimationLoop(()=>{const dt=Math.min(c
 // ============================================================
 const STORAGE_KEY='moeEnglishStep4A_v1',OLD_KEY='moeEnglishStep3C_v1';
 const items=[
-{id:'white_hoodie',name:'White English Hoodie',icon:'🧥',price:500,type:'top',desc:'Prototype: visibly changes Moe's top to a bright white reward outfit.'},
-{id:'black_cargo',name:'Black Cargo Pants',icon:'👖',price:400,type:'bottom',desc:'Prototype: visibly changes Moe's lower outfit to dark black.'},
-{id:'white_sneakers',name:'White Sneakers',icon:'👟',price:350,type:'shoes',desc:'Prototype: visibly changes Moe's shoes to white.'},
+{id:'white_hoodie',name:'White English Hoodie',icon:'🧥',price:500,type:'top',desc:"Prototype: visibly changes Moe's top to a bright white reward outfit."},
+{id:'black_cargo',name:'Black Cargo Pants',icon:'👖',price:400,type:'bottom',desc:"Prototype: visibly changes Moe's lower outfit to dark black."},
+{id:'white_sneakers',name:'White Sneakers',icon:'👟',price:350,type:'shoes',desc:"Prototype: visibly changes Moe's shoes to white."},
 {id:'headphones',name:'Blue Headphones',icon:'🎧',price:650,type:'accessory',desc:'Prototype: adds a simple blue 3D headphone accessory to Moe.'},
 {id:'school_bg',name:'School Background',icon:'🏫',price:300,type:'background',desc:'Changes the viewer to a warm school-like sky.'},
 {id:'sunset_bg',name:'Sunset Background',icon:'🌇',price:450,type:'background',desc:'Changes the viewer to an evening atmosphere.'}
