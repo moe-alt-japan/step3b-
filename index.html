@@ -495,11 +495,6 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 
   <div id="textbookSection" class="textbook-heading">
     <div><p class="eyebrow">CHOOSE YOUR GRADE</p><h2>New Horizon Textbooks</h2><p>Choose a textbook and start learning.</p></div>
-    
-      <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
-      <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
-      <button id="moe2dHomeChangeBtn" type="button">Change</button>
-    </div>
   </div>
 
   <div class="grade-grid">
@@ -1453,7 +1448,7 @@ renderAdventure();
  $m("moe2dAvatarBtn").onclick=openInventory;
  $m("moe2dShopBtn").onclick=openShop;
  $m("moe2dInventoryBtn").onclick=openInventory;
- $m("moe2dHomeChangeBtn").onclick=openInventory;
+ if($m("moe2dHomeChangeBtn")) $m("moe2dHomeChangeBtn").onclick=openInventory;
  $m("moe2dClose").onclick=closeShop;
  $m("moe2dInventoryClose").onclick=closeInventory;
  $m("moe2dModal").addEventListener("click",e=>{if(e.target===$m("moe2dModal"))closeShop();});
