@@ -12,3 +12,5 @@ Changes:
 - Beginner uses `moe-beginner.vrm`
 
 Note: Hoodie + Pants together will need one combined VRM model in the current whole-model system. Hoodie currently has visual priority when both slots are equipped.
+
+V8: Replaced Pants VRM with corrected white T-shirt + black pants export; bumped pants cache version to v=61.

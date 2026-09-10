@@ -1283,7 +1283,7 @@ const $a=id=>document.getElementById(id);
 let renderer,scene,camera,controls,vrm,started=false,raf=0,loader,currentAvatarFile='';
 const BASE_AVATAR='./moe-beginner.vrm?v=50';
 const HOODIE_AVATAR='./moe-hoodie.vrm?v=60';
-const PANTS_AVATAR='./moe-pants.vrm?v=60';
+const PANTS_AVATAR='./moe-pants.vrm?v=61';
 function resize(){if(!renderer)return;const c=$a('avatarCanvas'),r=c.getBoundingClientRect();renderer.setSize(Math.max(1,r.width),Math.max(1,r.height),false);camera.aspect=r.width/Math.max(1,r.height);camera.updateProjectionMatrix();}
 function desiredAvatar(equipped={}){
   if(equipped.top==='white_hoodie') return HOODIE_AVATAR;
