@@ -1,14 +1,14 @@
-# NH Interactive v2.0 — Shop & Inventory Integration
+# NH Interactive v2.1 — Inventory Studio
 
-Built from the working Avatar + Rewards pilot.
+This version keeps the working NH Interactive learning site, avatar, XP, levels, coins, Shop, Inventory, Adventure, and saved progress.
 
-Adds:
-- Shop button in the main header
-- Inventory button in the main header
-- One shared coin balance for activities, Adventure, and purchases
-- Buy / Equip / Unequip with localStorage saving
-- Six starter rewards
-- School and Sunset backgrounds visibly change the 3D avatar viewer
-- Clothing/accessories are saved logically until real VRoid/XWear assets are ready
+New inventory design:
+- Large item grid on the left
+- Live 3D Moe preview in the center
+- Equipped category slots on the right
+- Head, Top, Pants, Shoes, Socks, Gloves, Belt, and Background slots
+- Click an owned inventory item to equip/unequip
+- Existing old Bottom/Accessory equipment is migrated to Pants/Head
+- Coin balance and student level shown inside Inventory
 
-Keep all six files together when uploading to GitHub Pages.
+Real clothing meshes are still pending the VRoid/XWear asset step. Background rewards continue to work visibly now.
