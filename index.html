@@ -240,6 +240,35 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 @media(max-width:520px){.moe2d-grid{grid-template-columns:1fr}.moe2d-head{padding:16px}.moe2d-body{padding:12px}.moe2d-coin-pill{display:none}}
 </style>
 
+
+<style id="moe2dInventoryV2Styles">
+.textbook-heading{align-items:flex-end!important}
+.moe2d-home-avatar{
+  width:170px;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  position:relative;margin:-100px 22px -2px 18px;z-index:2
+}
+.moe2d-home-avatar-label{
+  font-size:10px;letter-spacing:1.5px;font-weight:900;color:#2a80d7;background:#fff;
+  border:1px solid #cfe4f5;border-radius:999px;padding:5px 9px;margin-bottom:5px;box-shadow:0 6px 16px rgba(45,92,126,.10)
+}
+.moe2d-home-avatar img{width:122px;height:145px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 10px 10px rgba(36,63,84,.20))}
+.moe2d-home-avatar strong{font-size:12px;background:#fff;border-radius:999px;padding:4px 9px;margin-top:-2px;box-shadow:0 5px 13px rgba(38,77,107,.10)}
+.moe2d-home-avatar button{margin-top:6px;border:0;background:#2e8df2;color:white;border-radius:999px;padding:6px 13px;font-weight:900;cursor:pointer}
+.moe2d-inv-body{padding:22px}
+.moe2d-inv-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.moe2d-inv-summary p{margin:0;color:#6884a2}
+.moe2d-owned-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.moe2d-owned-card{border:2px solid #d3e6f3;border-radius:20px;background:#f8fcff;padding:14px;position:relative}
+.moe2d-owned-card.wearing{border-color:#49c96a;background:#effff3}
+.moe2d-owned-card img{width:100%;height:260px;object-fit:cover;object-position:top;border-radius:14px;background:#e9f6ff}
+.moe2d-owned-card h4{font-size:20px;margin:10px 0 4px}.moe2d-owned-card p{margin:0 0 12px;color:#6d879f;font-size:14px}
+.moe2d-wear{width:100%;border:0;border-radius:12px;padding:11px;background:#2e8df2;color:#fff;font-weight:900;cursor:pointer}
+.moe2d-wear:disabled{background:#45bd67}
+.moe2d-empty-inventory{grid-column:1/-1;padding:35px;text-align:center;color:#6f8aa3;background:#f7fbfe;border:2px dashed #c8deee;border-radius:20px}
+@media(max-width:900px){.moe2d-owned-grid{grid-template-columns:repeat(2,1fr)}.moe2d-home-avatar{margin:-55px 0 0;width:130px}.moe2d-home-avatar img{width:96px;height:118px}}
+@media(max-width:600px){.moe2d-owned-grid{grid-template-columns:1fr}.moe2d-home-avatar{display:none}}
+</style>
+
 </head>
 <body>
 
@@ -282,6 +311,7 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
     <span class="pill moe2d-coin-pill">🪙 <b id="moe2dCoinTop">999,999</b></span>
     <button id="moe2dAvatarBtn" class="icon-btn moe2d-text-btn" title="Avatar">👤 Avatar</button>
     <button id="moe2dShopBtn" class="icon-btn moe2d-text-btn" title="Shop">🛍️ Shop</button>
+    <button id="moe2dInventoryBtn" class="icon-btn moe2d-text-btn" title="Inventory">🎒 Inventory</button>
     <button id="languageBtn" class="icon-btn language-btn" title="Language / 言語">🌏</button>
     <button id="soundBtn" class="icon-btn" title="Sound">🔊</button>
     <button id="themeBtn" class="icon-btn" title="Theme">☀️</button>
@@ -331,7 +361,12 @@ body.dark .dashboard-hero{background:linear-gradient(135deg,#223d5d,#3a3157);col
 
   <div id="textbookSection" class="textbook-heading">
     <div><p class="eyebrow">CHOOSE YOUR GRADE</p><h2>New Horizon Textbooks</h2><p>Choose a textbook and start learning.</p></div>
-    <div class="hero-icon">🎓</div>
+    <div class="moe2d-home-avatar" id="moe2dHomeAvatar">
+      <div class="moe2d-home-avatar-label">CURRENT AVATAR</div>
+      <img id="moe2dHomeAvatarImage" src="moe-beginner-2d.webp" alt="Current Moe avatar">
+      <strong id="moe2dHomeAvatarName">Beginner Outfit</strong>
+      <button id="moe2dHomeChangeBtn" type="button">Change</button>
+    </div>
   </div>
 
   <div class="grade-grid">
@@ -1172,29 +1207,69 @@ renderAdventure();
 <div id="moe2dToast" class="moe2d-toast"></div>
 
 
+
+<div id="moe2dInventoryModal" class="moe2d-modal hidden" aria-hidden="true">
+  <div class="moe2d-shell" role="dialog" aria-modal="true" aria-labelledby="moe2dInventoryTitle">
+    <div class="moe2d-head">
+      <div><h2 id="moe2dInventoryTitle">🎒 My Outfits</h2><p>Every outfit you buy stays here. Choose which one Moe wears.</p></div>
+      <button id="moe2dInventoryClose" class="moe2d-close">✕ Close</button>
+    </div>
+    <div class="moe2d-inv-body">
+      <div class="moe2d-inv-summary">
+        <p><b>Your collection</b> · Purchased outfits are saved on this device.</p>
+        <div class="moe2d-balance">🪙 <span id="moe2dInventoryBalance">999,999</span></div>
+      </div>
+      <div id="moe2dOwnedGrid" class="moe2d-owned-grid"></div>
+    </div>
+  </div>
+</div>
+
 <script id="moe2dPilotScript">
 (()=>{
  const $m=id=>document.getElementById(id);
- const KEY="nhMoe2DPilot_v1";
+ const KEY="nhMoe2DPilot_v2";
+ const OLDKEY="nhMoe2DPilot_v1";
  const defaults={coins:999999,owned:{beginner:true},wearing:"beginner"};
- let state;
- try{state=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||"{}"));}catch(e){state={...defaults};}
- state.owned=Object.assign({beginner:true},state.owned||{});
- // Development build: keep effectively unlimited coins.
- state.coins=999999;
+ let parsed={};
+ try{
+   parsed=JSON.parse(localStorage.getItem(KEY)||localStorage.getItem(OLDKEY)||"{}");
+ }catch(e){}
+ const state=Object.assign({},defaults,parsed);
+ state.owned=Object.assign({beginner:true},parsed.owned||{});
+ state.coins=999999; // development/test mode
+
  const outfits={
-   beginner:{name:"Beginner Outfit",src:"moe-beginner-2d.webp",price:0},
-   hoodie:{name:"Casual Hoodie Outfit",src:"moe-hoodie-2d.webp",price:1000}
+   beginner:{
+     name:"Beginner Outfit",src:"moe-beginner-2d.webp",price:0,
+     desc:"Your standard starter look."
+   },
+   hoodie:{
+     name:"Casual Hoodie Outfit",src:"moe-hoodie-2d.webp",price:1000,
+     desc:"A complete casual reward outfit."
+   }
  };
+
  function save(){localStorage.setItem(KEY,JSON.stringify(state));}
- function toast(t){const el=$m("moe2dToast");el.textContent=t;el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),1600);}
- function render(){
-   $m("moe2dBalance").textContent=state.coins.toLocaleString();
-   $m("moe2dCoinTop").textContent=state.coins.toLocaleString();
+ function toast(t){
+   const el=$m("moe2dToast");el.textContent=t;el.classList.add("show");
+   clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),1600);
+ }
+ function setCurrentAvatar(){
    const o=outfits[state.wearing]||outfits.beginner;
-   const img=$m("moe2dAvatarImage");
-   if(!img.src.endsWith(o.src)){img.classList.add("swap");setTimeout(()=>{img.src=o.src;img.onload=()=>img.classList.remove("swap");},120);}
-   $m("moe2dOutfitName").textContent=o.name;
+   const main=$m("moe2dAvatarImage");
+   if(main){
+     if(!main.src.endsWith(o.src)){
+       main.classList.add("swap");
+       setTimeout(()=>{main.src=o.src;main.onload=()=>main.classList.remove("swap");},100);
+     }
+   }
+   if($m("moe2dOutfitName"))$m("moe2dOutfitName").textContent=o.name;
+   if($m("moe2dHomeAvatarImage"))$m("moe2dHomeAvatarImage").src=o.src;
+   if($m("moe2dHomeAvatarName"))$m("moe2dHomeAvatarName").textContent=o.name;
+ }
+ function renderShop(){
+   if($m("moe2dBalance"))$m("moe2dBalance").textContent=state.coins.toLocaleString();
+   if($m("moe2dCoinTop"))$m("moe2dCoinTop").textContent=state.coins.toLocaleString();
    document.querySelectorAll(".moe2d-item[data-outfit]").forEach(card=>{
      const id=card.dataset.outfit,btn=card.querySelector(".moe2d-buy");
      card.classList.toggle("wearing",state.wearing===id);
@@ -1203,17 +1278,66 @@ renderAdventure();
      else{btn.textContent=`Buy · ${outfits[id].price.toLocaleString()} 🪙`;btn.disabled=false;}
    });
  }
- function open(){ $m("moe2dModal").classList.remove("hidden");$m("moe2dModal").setAttribute("aria-hidden","false");render(); }
- function close(){ $m("moe2dModal").classList.add("hidden");$m("moe2dModal").setAttribute("aria-hidden","true"); }
- $m("moe2dAvatarBtn").onclick=open;$m("moe2dShopBtn").onclick=open;$m("moe2dClose").onclick=close;
- $m("moe2dModal").addEventListener("click",e=>{if(e.target===$m("moe2dModal"))close();});
+ function renderInventory(){
+   if($m("moe2dInventoryBalance"))$m("moe2dInventoryBalance").textContent=state.coins.toLocaleString();
+   const grid=$m("moe2dOwnedGrid");if(!grid)return;
+   const owned=Object.keys(outfits).filter(id=>state.owned[id]);
+   if(!owned.length){
+     grid.innerHTML='<div class="moe2d-empty-inventory">You have not purchased any outfits yet.</div>';
+     return;
+   }
+   grid.innerHTML=owned.map(id=>{
+     const o=outfits[id],wearing=state.wearing===id;
+     return `<article class="moe2d-owned-card ${wearing?"wearing":""}">
+       <img src="${o.src}" alt="${o.name}">
+       <h4>${o.name}</h4>
+       <p>${o.desc}</p>
+       <button class="moe2d-wear" data-wear="${id}" ${wearing?"disabled":""}>${wearing?"✓ Wearing":"Wear"}</button>
+     </article>`;
+   }).join("");
+   grid.querySelectorAll("[data-wear]").forEach(btn=>btn.onclick=()=>{
+     state.wearing=btn.dataset.wear;save();renderAll();toast(`${outfits[state.wearing].name} equipped!`);
+   });
+ }
+ function renderAll(){setCurrentAvatar();renderShop();renderInventory();}
+ function openShop(){
+   $m("moe2dModal").classList.remove("hidden");
+   $m("moe2dModal").setAttribute("aria-hidden","false");renderAll();
+ }
+ function closeShop(){
+   $m("moe2dModal").classList.add("hidden");
+   $m("moe2dModal").setAttribute("aria-hidden","true");
+ }
+ function openInventory(){
+   $m("moe2dInventoryModal").classList.remove("hidden");
+   $m("moe2dInventoryModal").setAttribute("aria-hidden","false");renderAll();
+ }
+ function closeInventory(){
+   $m("moe2dInventoryModal").classList.add("hidden");
+   $m("moe2dInventoryModal").setAttribute("aria-hidden","true");
+ }
+
+ $m("moe2dAvatarBtn").onclick=openInventory;
+ $m("moe2dShopBtn").onclick=openShop;
+ $m("moe2dInventoryBtn").onclick=openInventory;
+ $m("moe2dHomeChangeBtn").onclick=openInventory;
+ $m("moe2dClose").onclick=closeShop;
+ $m("moe2dInventoryClose").onclick=closeInventory;
+ $m("moe2dModal").addEventListener("click",e=>{if(e.target===$m("moe2dModal"))closeShop();});
+ $m("moe2dInventoryModal").addEventListener("click",e=>{if(e.target===$m("moe2dInventoryModal"))closeInventory();});
+
  document.querySelectorAll(".moe2d-buy[data-action]").forEach(btn=>btn.addEventListener("click",()=>{
    const id=btn.dataset.action,o=outfits[id];if(!o)return;
-   if(!state.owned[id]){state.owned[id]=true;toast(`${o.name} purchased!`);}
-   else toast(`${o.name} equipped!`);
-   state.wearing=id;save();render();
+   if(!state.owned[id]){
+     state.owned[id]=true;
+     toast(`${o.name} purchased!`);
+   }else{
+     toast(`${o.name} equipped!`);
+   }
+   state.wearing=id;save();renderAll();
  }));
- save();render();
+
+ save();renderAll();
 })();
 </script>
 

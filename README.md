@@ -1,22 +1,19 @@
-# NH Interactive – 2D Shop Pilot v1
+# NH Interactive – 2D Shop + Inventory v2
 
-Built from the clean NH Interactive v1.9.8 source.
+Built from the clean NH Interactive source.
 
-## What changed
-- No VRM / Three.js / 3D avatar files.
-- Added lightweight 2D Avatar + Shop buttons.
-- Fixed-outfit flow: Buy -> Wear.
-- Beginner Outfit + Casual Hoodie Outfit are available.
-- Test mode keeps 999,999 coins.
-- Existing NH Interactive activities remain intact.
+## New in v2
+- Keeps the lightweight 2D avatar system.
+- Shop purchases are stored in an Inventory.
+- Students can switch between every purchased outfit.
+- The currently equipped Moe is displayed above the NH1/NH2/NH3 textbook section.
+- Changing the outfit in Inventory immediately changes the homepage avatar.
+- Beginner Outfit + Casual Hoodie Outfit are available for the pilot.
+- 999,999 coins remain enabled for development testing.
+- No VRM / Three.js / 3D model files.
 
-## Why this build
-This is a proof that the public classroom version can use small 2D WebP outfit images instead of large VRM files.
+## Student flow
+Study -> earn coins -> Shop -> Buy -> Inventory -> Wear -> Current Avatar updates.
 
-## Files
-- index.html
-- moe-beginner-2d.webp
-- moe-hoodie-2d.webp
-- new-horizon-1.png
-- new-horizon-2.png
-- new-horizon-3.png
+## Storage
+The avatar art uses tiny WebP files rather than large VRM models.
